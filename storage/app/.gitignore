@@ -1,0 +1,4 @@
+!public/
+!env/
+!__pycache__
+!.gitignore
