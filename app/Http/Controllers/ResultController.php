@@ -21,10 +21,6 @@ class ResultController extends Controller
         $tgl = $output->created_at;
         $foto = $output->image;
         $hasil = $output->status;
-        // print_r($hasil);
-        // echo($hasil);
-        // echo($find);
-        // echo($output);
         if($hasil == "TIDAK menggunakan Masker"){
             if($result->kode == NULL){
                 $info = "Wajah tidak tersedia pada dataset";
@@ -39,5 +35,20 @@ class ResultController extends Controller
             $info = "Orang Tersebut Telah Menaati Protokol Kesehatan";
             return view('pages.result_positive', ['tgl' => $tgl ,'foto' => $foto ,'result' => $hasil, 'info' => $info]);
         }
+    }
+
+    public function destroy($id)
+    {
+        $result = Result::find($id);
+        $image = "/Applications/XAMPP/xamppfiles/htdocs/tugasakhir/storage/app/public/".$result->image;
+        // echo($image);
+        if (!unlink($image)) { 
+            echo ("$image cannot be deleted due to an error"); 
+        } 
+        else { 
+            $result->delete();
+            return back();
+        }
+        
     }
 }
