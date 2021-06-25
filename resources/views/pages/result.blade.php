@@ -30,7 +30,9 @@
                                         <th>Nama</th>
                                         <th>Status</th>
                                         <th>Waktu Deteksi</th>
-                                        <th class="text-center">Action</th>
+                                        {{-- <th class="text-center">Action</th> --}}
+                                        <th></th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 @foreach ($results as $result)
@@ -39,8 +41,15 @@
                                     <th scope="row">{{ $result->nama }}</th>
                                     <td>{{ $result->status }}</td>
                                     <td>{{ $result->created_at }}</td>
-                                    <td class="text-center">
-                                        <a class="btn btn-primary btn-sm" href="{{ route('result.show', $result->id) }}">Show</a>
+                                    <td width="20px" class="text-center">
+                                        <a class="btn btn-primary btn-sm" href="{{ route('result.show', $result->id) }}">Lihat</a>
+                                    </td>
+                                    <td width="20px">
+                                        <form action="{{ route('result.destroy', $result->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger btn-sm">Hapus</button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach

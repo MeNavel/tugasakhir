@@ -6,7 +6,7 @@
     <div class="container-fluid mt--7">
         <div class="row">
             {{-- Deteksi Masker Menggunakan Image Capture--}}
-            <div class="col-xl-12 mb-5 mb-xl-0">
+            {{-- <div class="col-xl-12 mb-5 mb-xl-0">
                 <div class="card shadow">
                     <div class="card-header border-0">
                         <div class="row align-items-center">
@@ -48,7 +48,7 @@
                                     width: 490,
                                     height: 390,
                                     image_format: 'JPG',
-                                    jpeg_quality: 1080
+                                    jpeg_quality: 100
                                 });
                             
                                 Webcam.attach( '#my_camera' );
@@ -64,7 +64,7 @@
                         
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             {{-- Deteksi Masker Menggunakan File --}}
             <div class="col-xl-12 mb-5 mb-xl-0 mt-3">

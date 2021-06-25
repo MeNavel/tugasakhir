@@ -1,7 +1,4 @@
-export FLASK_APP=test.py
+source env/bin/activate     
+export FLASK_APP=predict.py
 export FLASK_ENV="development"
 flask run
-
-$env:FLASK_APP = "hello"
-$env:FLASK_ENV="development"
-> flask run
