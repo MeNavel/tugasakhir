@@ -13,6 +13,9 @@ from keras.models import Model
 import numpy as np
 
 from flask import Flask, request
+from threading import Thread
+from tensorflow.keras.models import load_model
+from PIL import Image
 
 
 app = Flask(__name__)
@@ -216,6 +219,42 @@ def load_image(img_path, img_size) :
     img_tensor = np.expand_dims(img_tensor, axis=0)         # (1, height, width, channels), add a dimension because the model expects this shape: (batch_size, height, width, channels)
     img_tensor /= 255.                                      # imshow expects values in the range [0, 1]
     return img_tensor
+
+@app.route('/predict_shield')
+def index_shield():
+    file = request.args['file']
+
+    # Parameters
+    input_size = (150,150)
+
+    #define input shape
+    channel = (3,)
+    input_shape = input_size + channel
+
+    #define labels
+    labels = ['noshield', 'shield']
+
+    # ada 2 cara load model, jika cara pertama berhasil maka bisa lasngusng di lanjutkan ke fungsi prediksi
+
+    MODEL_PATH = '/Applications/XAMPP/xamppfiles/htdocs/tugasakhir/storage/app/python/model/model.h5'
+    model = load_model(MODEL_PATH,compile=False)
+
+    # read image
+    im = Image.open(file)
+    X = preprocess(im,input_size)
+    X = reshape([X])
+    y = model.predict(X)
+
+    # print( labels[np.argmax(y)], np.max(y) )
+    return labels[np.argmax(y)]
+
+def preprocess(img,input_size):
+    nimg = img.convert('RGB').resize(input_size, resample= 0)
+    img_arr = (np.array(nimg))/255
+    return img_arr
+
+def reshape(imgs_arr):
+    return np.stack(imgs_arr, axis=0)
 
 if __name__ == '__main__':
     app.run(debug=True, threaded=True)

@@ -30,7 +30,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
 	Route::get('predict', ['as' => 'predict.index', 'uses' => 'App\Http\Controllers\PredictController@index']);  
 	Route::post('predict.webcam', ['as' => 'predict.webcam', 'uses' => 'App\Http\Controllers\PredictController@predict_webcam']); 
-	Route::post('predict.file', ['as' => 'predict.file', 'uses' => 'App\Http\Controllers\PredictController@predict_file']); 
+	Route::post('predict.file', ['as' => 'predict.file', 'uses' => 'App\Http\Controllers\PredictController@predict_file']);
+	Route::get('shield', ['as' => 'shield.index', 'uses' => 'App\Http\Controllers\ShieldController@index']);  
+	Route::post('shield.file', ['as' => 'shield.file', 'uses' => 'App\Http\Controllers\ShieldController@predict_file']); 
 	Route::resource('dataset', App\Http\Controllers\DatasetController::class);
 	Route::resource('result', App\Http\Controllers\ResultController::class);
 	Route::get('upgrade', function () {return view('pages.upgrade');})->name('upgrade'); 
