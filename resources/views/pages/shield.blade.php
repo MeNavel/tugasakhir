@@ -18,7 +18,7 @@
                     <div class="card body">
                         <br/>
                         <div class="container">
-                            <form action="{{  route('predict.file')  }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{  route('shield.file')  }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <input type="file" class="form-control" name="file" id="file">
