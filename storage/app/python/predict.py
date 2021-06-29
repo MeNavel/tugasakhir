@@ -160,15 +160,7 @@ def prediksiImg(nmFile,model):
 #             prob = val
 #             huruf = key
 #         prev_val = val
-#     score = round(prob*100,2)
-#     nmFile = nmFile.replace('/','\\')
-
-#     if rank <= 5 and score > 90:
-#         return "%s" %(huruf)
-
-#     else:
-#         result = "Tidak Terdeteksi"
-#         return "%s" %(result)
+#     score 
 
 @app.route('/predict_face')
 def index_face():
