@@ -8,10 +8,14 @@ use App\Models\Result;
 
 class ResultController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $results = Result::latest()->SimplePaginate(6);
+        $id = auth()->user()->id;
+        $results = Result::where('id_akun', $id)->latest()->SimplePaginate(6);
         return view('pages.result',compact('results'))->with('i', (request()->input('page', 1) - 1) * 5);
+
+        // $results = Result::latest()->SimplePaginate(6);
+        // return view('pages.result',compact('results'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function show(Result $result)

@@ -72,6 +72,10 @@ class PredictController extends Controller
 
     public function predict_file(Request $request)
     {
+        $request->validate([
+            'file' => 'required|image|mimes:JPG,JPEG,PNG,jpeg,png,jpg,gif,svg',
+        ]);
+        $id = (auth()->user()->id);
         //Simpan Foto
         $fileName = uniqid() . '.png';
         $request->file->storeAs('public',$fileName);
@@ -91,7 +95,8 @@ class PredictController extends Controller
                 'nama' => $nama,
                 'status' => $result,
                 'image' => $fileName,
-                'created_at' => $tgl
+                'created_at' => $tgl,
+                'id_akun' => $id
             ]);
             return view('pages.result_positive', ['foto' => $fileName, 'result' => $result, 'tgl' => $tgl, 'info'=>$info]);
         }
@@ -105,7 +110,8 @@ class PredictController extends Controller
                     'nama' => $nama,
                     'status' => $result,
                     'image' => $fileName,
-                    'created_at' => $tgl
+                    'created_at' => $tgl,
+                    'id_akun' => $id
                 ]);
                 return view('pages.result_positive', ['foto' => $fileName, 'result' => $result, 'tgl' => $tgl, 'info' => $info]);
             }
@@ -116,7 +122,8 @@ class PredictController extends Controller
                     'status' => $result,
                     'kode' => $check_face,
                     'image' => $fileName,
-                    'created_at' => $tgl
+                    'created_at' => $tgl,
+                    'id_akun' => $id
                 ]);
                 return view('pages.result_negatif', ['id' => $indentity ,'tgl' => $tgl ,'foto' => $fileName ,'result' => $result]);
             }

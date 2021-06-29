@@ -82,6 +82,11 @@
                         <br/>
                         <div class="container">
                             <form action="{{  route('predict.file')  }}" method="POST" enctype="multipart/form-data">
+                                @if (count($errors) > 0)
+                                <div class="alert alert-danger">
+                                    <strong>Whoops!</strong> File yang dimasukkan tidak terdeteksi gambar.
+                                </div>
+                                @endif
                                 @csrf
                                 <div class="form-group">
                                     <input type="file" class="form-control" name="file" id="file">

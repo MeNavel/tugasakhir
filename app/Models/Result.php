@@ -9,6 +9,6 @@ class Result extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nama', 'status', 'kode', 'image'
+        'nama', 'status', 'kode', 'image', 'id_akun'
     ];
 }
