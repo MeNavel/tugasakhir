@@ -45,14 +45,7 @@ class ResultController extends Controller
     {
         $result = Result::find($id);
         $image = "/Applications/XAMPP/xamppfiles/htdocs/tugasakhir/storage/app/public/".$result->image;
-        // echo($image);
-        if (!unlink($image)) { 
-            echo ("$image cannot be deleted due to an error"); 
-        } 
-        else { 
-            $result->delete();
-            return back();
-        }
-        
+        $result->delete();
+        return back();
     }
 }
