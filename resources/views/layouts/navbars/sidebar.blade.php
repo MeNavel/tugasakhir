@@ -85,11 +85,11 @@
                         <i class="ni ni-camera-compact text-primary"></i> {{ __('Deteksi FaceShield') }}
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" href="{{ route('dataset.index') }}">
                         <i class="ni ni-archive-2 text-primary"></i> {{ __('Dataset') }}
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('result.index') }}">
                         <i class="ni ni-folder-17 text-primary"></i> {{ __('Data Hasil Prediksi') }}
