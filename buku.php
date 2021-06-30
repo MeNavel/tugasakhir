@@ -1,15 +1,23 @@
 <?php
-    $check_face = file_get_contents("http://127.0.0.1:5000/predict_face?file=".$file_predict."");
-    if($check_face != "Tidak Terdeteksi"){
-        $$indentity = DB::table('datasets')->where('kode', 'like', "%".$check_face."%")->first();
-        DB::table('results')->insert([
-            'nama' => $indentity->nama,
-            'status' => $result,
-            'kode' => $check_face,
-            'image' => $fileName,
-            'created_at' => $tgl,
-            'id_akun' => $id
-        ]);
-        return view('pages.result_negatif', ['id' => $indentity ,'tgl' => $tgl ,'foto' => $fileName ,'result' => $result]);
+    public function update(ProfileRequest $request)
+    {
+        if (auth()->user()->id == 1) {
+            return back()->withErrors(['not_allow_profile' => __('You are not allowed to change data for a default user.')]);
+        }
+
+        auth()->user()->update($request->all());
+
+        return back()->withStatus(__('Profile successfully updated.'));
+    }
+
+    public function password(PasswordRequest $request)
+    {
+        if (auth()->user()->id == 1) {
+            return back()->withErrors(['not_allow_password' => __('You are not allowed to change the password for a default user.')]);
+        }
+
+        auth()->user()->update(['password' => Hash::make($request->get('password'))]);
+
+        return back()->withPasswordStatus(__('Password successfully updated.'));
     }
 ?>
