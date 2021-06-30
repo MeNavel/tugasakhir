@@ -2,7 +2,7 @@
 
 @section('content')
     @include('users.partials.header', [
-        'title' => __('Halo') . ' '. auth()->user()->name,
+        // 'title' => __('Halo') . ' '. auth()->user()->name,
         'description' => __('Berikut Hasil Deteksi Menggunakan Progam PYTHON'),
         'class' => 'col-lg-12'
     ])   
