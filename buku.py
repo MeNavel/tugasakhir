@@ -1,0 +1,1 @@
+model = LogisticRegression(multi_class='auto',solver='lbfgs', max_iter=1000) 
