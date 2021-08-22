@@ -27,7 +27,7 @@ class ShieldController extends Controller
         date_default_timezone_set('Asia/Jakarta');
         $tgl=date("Y/m/d H:i:s");
 
-        $file_predict = "/Applications/XAMPP/xamppfiles/htdocs/tugasakhir/storage/app/public/".$fileName;
+        $file_predict = "/XAMPP/htdocs/tugasakhir/storage/app/public/".$fileName;
         
         $check_mask = file_get_contents("http://127.0.0.1:5000/predict_shield?file=".$file_predict."");
         if($check_mask == "shield"){
@@ -46,7 +46,8 @@ class ShieldController extends Controller
         else{
             $result = "TIDAK menggunakan FaceShield";
             $check_face = file_get_contents("http://127.0.0.1:5000/predict_face?file=".$file_predict."");
-            if($check_face == "Tidak Terdeteksi"){
+            // if($check_face == "Tidak Terdeteksi"){
+            if($check_face != "Tidak Terdeteksi"){
                 $nama = "Orang";
                 $info = "Wajah tidak tersedia pada dataset";
                 DB::table('results')->insert([
@@ -58,8 +59,9 @@ class ShieldController extends Controller
                 ]);
                 return view('pages.result_positive', ['foto' => $fileName, 'result' => $result, 'tgl' => $tgl, 'info' => $info]);
             }
-            else{
+            else if($check_face == "supardi"){
                 $indentity = DB::table('datasets')->where('kode', 'like', "%".$check_face."%")->first();
+                // echo($check_face);
                 DB::table('results')->insert([
                     'nama' => $indentity->nama,
                     'status' => $result,

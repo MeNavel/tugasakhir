@@ -86,6 +86,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('webcam') }}">
+                        <i class="ni ni-camera-compact text-primary"></i> {{ __('Deteksi FaceShield dengan Webcam') }}
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('dataset.index') }}">
                         <i class="ni ni-archive-2 text-primary"></i> {{ __('Dataset') }}
                     </a>

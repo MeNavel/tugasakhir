@@ -10,26 +10,14 @@
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h3 class="mb-0">Deteksi FaceShield Menggunakan File Yang Di Upload</h3>
+                                <h3 class="mb-0">Deteksi FaceShield dari Webcam</h3>
                             </div>
                         </div>
                     </div>
-
                     <div class="card body">
                         <br/>
                         <div class="container">
-                            <form action="{{  route('shield.file')  }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <div class="form-group">
-                                    <input type="file" class="form-control" name="file" id="file" accept="image/png, image/jpeg">
-                                </div>
-                                <div class="row">
-                                    <div class="col text-center">
-                                        <button type="submit" class="btn btn-success">Deteksi File</button>
-                                    </div>
-                                </div>
-                                <div class="mt-3"></div>
-                            </form>
+                            <iframe src="http://127.0.0.1:5000/webcam" height="800" width="1200" title="webcam detection faceshield"></iframe>
                         </div>
                     </div>
                 </div>
