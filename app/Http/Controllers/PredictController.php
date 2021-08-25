@@ -26,7 +26,7 @@ class PredictController extends Controller
         date_default_timezone_set('Asia/Jakarta');
         $tgl=date("Y/m/d H:i:s");
 
-        $file_predict = "/Applications/XAMPP/xamppfiles/htdocs/tugasakhir/storage/app/public/".$fileName;
+        $file_predict = "/Users/drajad/Mac/Website/website-masker/storage/app/public/".$fileName;
         
         $check_mask = file_get_contents("http://127.0.0.1:5000/predict_mask?file=".$file_predict."");
         if($check_mask == "mask"){

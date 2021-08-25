@@ -22,7 +22,7 @@ app = Flask(__name__)
 
 @app.route('/predict_mask')
 def index_mask():
-    model=loadModel('/Applications/XAMPP/xamppfiles/htdocs/tugasakhir/storage/app/python/model/mobileNet_Mask.pkl')
+    model=loadModel('/Users/drajad/Mac/Website/website-masker/storage/app/python/model/mobileNet_Mask.pkl')
     nmFile = request.args['file']
     r=prediksiImg(nmFile,model)
     return r
@@ -90,8 +90,8 @@ def prediksiImg(nmFile,model):
 
 # @app.route('/predict_face')
 # def index_face():
-#     # model=loadModel('/Applications/XAMPP/xamppfiles/htdocs/tugasakhir/storage/app/python/model/mobileNet_Face.pkl')
-#     model=loadModel('/Applications/XAMPP/xamppfiles/htdocs/tugasakhir/storage/app/python/model/mobileNet_Face_Baru_2.pkl')
+#     # model=loadModel('/Users/drajad/Mac/Website/website-masker/storage/app/python/model/mobileNet_Face.pkl')
+#     model=loadModel('/Users/drajad/Mac/Website/website-masker/storage/app/python/model/mobileNet_Face_Baru_2.pkl')
 
 #     nmFile = request.args['file']
 #     r=prediksiImg(nmFile,model)
@@ -164,16 +164,16 @@ def prediksiImg(nmFile,model):
 
 @app.route('/predict_face')
 def index_face():
-    # nmFile = ('/Applications/XAMPP/xamppfiles/htdocs/tugasakhir/storage/app/python/IMG_6712.JPG')
+    # nmFile = ('/Users/drajad/Mac/Website/website-masker/storage/app/python/IMG_6712.JPG')
     nmFile = request.args['file']
-    mapClass = ('/Applications/XAMPP/xamppfiles/htdocs/tugasakhir/storage/app/python/map.npz')
+    mapClass = ('/Users/drajad/Mac/Website/website-masker/storage/app/python/map.npz')
     loaded = np.load(mapClass)
     mapAngka  = loaded['label']
     img_size = 224
     bntk_input = (img_size, img_size, 3)
     kelas=len(mapAngka)
     fold_no=2
-    nmModel  = ('/Applications/XAMPP/xamppfiles/htdocs/tugasakhir/storage/app/python/model/modelCNN.h5')
+    nmModel  = ('/Users/drajad/Mac/Website/website-masker/storage/app/python/model/modelCNN.h5')
     model = mobileNetCNN(bntk_input,kelas)
     model.load_weights(nmModel) 
     img = load_image(nmFile, img_size)
@@ -228,7 +228,7 @@ def index_shield():
 
     # ada 2 cara load model, jika cara pertama berhasil maka bisa lasngusng di lanjutkan ke fungsi prediksi
 
-    MODEL_PATH = '/Applications/XAMPP/xamppfiles/htdocs/tugasakhir/storage/app/python/model/model.h5'
+    MODEL_PATH = '/Users/drajad/Mac/Website/website-masker/storage/app/python/model/model.h5'
     model = load_model(MODEL_PATH,compile=False)
 
     # read image

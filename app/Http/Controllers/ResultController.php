@@ -44,7 +44,7 @@ class ResultController extends Controller
     public function destroy($id)
     {
         $result = Result::find($id);
-        $image = "/Applications/XAMPP/xamppfiles/htdocs/tugasakhir/storage/app/public/".$result->image;
+        $image = "/Users/drajad/Mac/Website/website-masker/storage/app/public/".$result->image;
         unlink($image);
         $result->delete();
         return back();

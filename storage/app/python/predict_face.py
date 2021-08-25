@@ -101,7 +101,7 @@ if __name__ == '__main__':
     r=prediksiImg(nmFile,model)
     print("%s" %(r))
     
-    # model=loadModel('/Applications/XAMPP/xamppfiles/htdocs/tugasakhir/storage/app/python/model/mobileNet_Face.pkl')
+    # model=loadModel('/Users/drajad/Mac/Website/website-masker/storage/app/python/model/mobileNet_Face.pkl')
     # # nmFile = '/Users/drajad/Desktop/Test/fariq_no_mask.JPG'
     # nmFile = '/Users/drajad/Desktop/Test/test2.JPG'
     # r=prediksiImg(nmFile,model)
